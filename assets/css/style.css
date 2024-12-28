@@ -1,0 +1,594 @@
+@font-face {
+  font-family: "JejuHallasan"; 
+  src: url("../fonts/JejuHallasan.ttf") format("truetype"); /* Путь к шрифту */
+  font-weight: normal; /* Нормальный вес шрифта */
+  font-style: normal; /* Нормальный стиль шрифта */
+}
+/* анимация пульсации */
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Начальный размер */
+  }
+  50% {
+    transform: scale(1.1); /* Увеличение на 10% */
+  }
+  100% {
+    transform: scale(1); /* Возврат к начальному размеру */
+  }
+}
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(-50%); /* Начальная позиция (влево) */
+  }
+  50% {
+    transform: translateX(50%); /* Конечная позиция (вправо) */
+  }
+  100% {
+    transform: translateX(-50%); /* Возврат к начальной позиции (влево) */
+  }
+}
+
+/* анимация волны */
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0); /* Исходная позиция */
+  }
+  25% {
+    transform: translateY(-15px); /* Подъем */
+  }
+  50% {
+    transform: translateY(10px); /* Опускание */
+  }
+  75% {
+    transform: translateY(-5px); /* Подъем */
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "JejuHallasan", sans-serif;
+  background-color: #e4e4e4;
+}
+
+.container {
+  width: 1903px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.v-flip {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.white_color {
+  color: #e4e4e4;
+}
+.white_bg {
+  background-color: #e4e4e4;
+}
+.red_bg {
+  background-color: #5c0101;
+}
+.section_one {
+  display: grid;
+  grid-template-columns: 995px 925px;
+  font-size: 132px;
+  line-height: 153.92px;
+}
+.section_one div {
+  padding: 8px 4%;
+  text-align: center;
+}
+.section_one .white {
+  color: black;
+}
+.section_one .black {
+  background-color: black;
+}
+.section_two {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 170px;
+  padding: 0% 6%;
+  text-align: left;
+  font-size: 130px;
+  line-height: 153.92px;
+  letter-spacing: 0.56em;
+}
+.section_three {
+  height: 268px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 843px 1077px;
+}
+.section_three .black,
+.section_three .red {
+  height: 100%;
+}
+.section_three .black {
+  background-color: black;
+  position: relative;
+}
+.section_three .black img {
+  position: absolute;
+  left: 0px;
+  top: -100px;
+  z-index: 1;
+  height: 500px;
+}
+.section_three .red img {
+  transform: translate(0px, 10px);
+}
+.section_four {
+  display: grid;
+  grid-template-columns: 655px 1265px;
+  height: 149px;
+  width: 100%;
+  position: relative;
+}
+.section_four .black {
+  width: 655px;
+  background-color: #000;
+  height: 100%;
+}
+.section_four .white {
+  position: relative;
+  overflow: hidden;
+}
+.section_four .white img {
+  position: absolute;
+  top: -5px;
+  left: -40px;
+}
+.section_four .black_line {
+  width: 630px;
+  height: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  background-color: #000;
+}
+.section_five {
+  width: 100%;
+  height: 67px;
+  background-color: #000;
+}
+.section_six {
+  height: 133px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  overflow-y: hidden;
+}
+.section_six .one {
+  font-size: 70px;
+}
+.section_six .two {
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+}
+.section_six .three {
+  font-size: 70px;
+}
+.section_six .four {
+  font-size: 258.31px;
+  animation: pulse 1.5s infinite;
+}
+.section_six .five {
+  font-size: 70px;
+}
+.section_seven {
+  width: 100%;
+  height: 128px;
+  background-color: #000;
+}
+.section_eight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 118px;
+  width: 100%;
+}
+.section_nine {
+  height: 749px;
+  display: flex;
+}
+.section_nine .left {
+  background-color: #000;
+  width: 581px;
+  height: 100%;
+}
+
+.section_nine .left img {
+  height: 100%;
+  opacity: 0; /* Начальное состояние: невидимо */
+  transform: translateX(-100px); /* Начальное положение: смещено влево */
+  transition: opacity 1s ease, transform 1s ease; /* Параметры анимации */
+}
+.section_nine .left img.visible {
+  opacity: 1; /* Конечное состояние: видно */
+  transform: translateX(0); /* Конечное положение: на месте */
+}
+.section_nine .center {
+  width: 1153px;
+  height: 100%;
+  color: #fff;
+  position: relative;
+
+  font-size: 33.78px;
+  line-height: 33.98px;
+}
+.section_nine .center .block_text_one,
+.section_nine .center .block_text_two,
+.section_nine .center .block_text_three,
+.section_nine .center .block_text_four,
+.section_nine .center .block_text_five {
+  font-size: 34px;
+  color: #000;
+  position: absolute;
+  display: inline-block;
+}
+.section_nine .center .block_text_one {
+  top: 170px;
+  left: 10px;
+}
+.section_nine .center .block_text_two {
+  top: 240px;
+  left: 290px;
+  transform: rotate(90deg);
+}
+.section_nine .center .block_text_three {
+  top: 210px;
+  left: 470px;
+}
+.section_nine .center .block_text_four {
+  top: 300px;
+  left: 570px;
+  transform: rotate(90deg);
+}
+.section_nine .center .block_text_five {
+  top: 440px;
+  left: 550px;
+}
+.section_nine .center .text_one {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  width: 246px;
+}
+.section_nine .center .text_two {
+  position: absolute;
+  left: 280px;
+  bottom: 30px;
+  width: 246px;
+}
+.section_nine .center .text_three {
+  position: absolute;
+  right: 0px;
+  bottom: 190px;
+  width: 246px;
+}
+.section_nine .center img {
+  height: 647px;
+}
+.section_nine .center .top {
+  width: 1097px;
+  height: 103px;
+}
+.section_nine .right {
+  width: 185px;
+  height: 100%;
+  background-color: #000;
+  font-size: 100.27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section_nine .right span {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+.section_ten {
+  width: 100%;
+  height: 204px;
+  background-color: #000;
+  position: relative;
+}
+.section_ten .white {
+  position: absolute;
+  bottom: 0;
+}
+.section_eleven {
+  position: relative;
+  width: 100%;
+  height: 785px;
+  background-color: #000;
+}
+.section_eleven .functionality {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 185px;
+  height: 717px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.section_eleven .functionality span {
+  display: inline-block;
+  transform: rotate(270deg);
+  font-size: 100px;
+  color: #000;
+}
+.section_eleven .text_one,
+.section_eleven .text_two,
+.section_eleven .text_three {
+  position: absolute;
+  font-size: 33.78px;
+  width: 246px;
+}
+.section_eleven .text_one {
+  left: 300px;
+  bottom: 300px;
+}
+.section_eleven .text_two {
+  left: 700px;
+  bottom: 200px;
+}
+.section_eleven .text_three {
+  left: 1100px;
+  bottom: 400px;
+}
+.section_eleven .dave {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 159px;
+  font-size: 119px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section_eleven .dave span {
+  animation: moveLeftRight 5s ease-in-out infinite; /* Применение анимации с плавной временной функцией */
+}
+.section_eleven .watcher {
+  font-size: 119px;
+  position: absolute;
+  left: 300px;
+  top: 80px;
+}
+
+.section_eleven .watcher .rotate-left {
+  display: inline-block; /* Необходимо для применения трансформации */
+  transform: rotate(-20deg); /* Поворот влево на 20 градусов */
+}
+
+.section_eleven .watcher .rotate-right {
+  display: inline-block; /* Необходимо для применения трансформации */
+  transform: rotate(20deg); /* Поворот вправо на 20 градусов */
+}
+
+/* Создание волнообразного эффекта */
+.section_eleven .watcher span {
+  display: inline-block; /* Необходимо для применения трансформации */
+  transition: transform 0.3s ease; /* Плавный переход при наведении */
+  animation: wave 1s ease-in-out infinite;  
+}
+
+.section_eleven .watcher span:nth-child(1) {
+  transform: rotate(-20deg) translateY(0px); /* W */
+  animation-delay: 0s;
+}
+.section_eleven .watcher span:nth-child(2) {
+  transform: rotate(20deg) translateY(-10px); /* A */
+  animation-delay: 0.1s;
+}
+.section_eleven .watcher span:nth-child(3) {
+  transform: rotate(20deg) translateY(-5px); /* T */
+  animation-delay: 0.2s;
+}
+.section_eleven .watcher span:nth-child(4) {
+  transform: rotate(-20deg) translateY(5px); /* C */
+  animation-delay: 0.3s;
+}
+.section_eleven .watcher span:nth-child(5) {
+  transform: rotate(20deg) translateY(10px); /* H */
+  animation-delay: 0.4s;
+}
+.section_eleven .watcher span:nth-child(6) {
+  transform: rotate(-20deg) translateY(-10px); /* E */
+  animation-delay: 0.5s;
+}
+.section_eleven .watcher span:nth-child(7) {
+  transform: rotate(20deg) translateY(-20px); /* R */
+  animation-delay: 0.6s;
+}
+.section_eleven .schema {
+  position: absolute;
+  right: 40px;
+  width: 410px;
+  top: 40%;
+  transform: translate(0%, -50%);
+}
+.section_eleven .schema img {
+  width: 100%;
+}
+.section_eleven .watcher_roboto {
+  opacity: 1; /* Начальное состояние: невидимо */
+  transform: translateX(460px); /* Начальное положение: смещено влево */
+  transition: opacity 1s ease, transform 1s ease; /* Параметры анимации */
+}
+.section_eleven .watcher_roboto.visible {
+  opacity: 1; /* Конечное состояние: видно */
+  transform: translateX(0); /* Конечное положение: на месте */
+}
+.section_twelve {
+  position: relative;
+  background-color: #000;
+  height: 710px;
+}
+.section_twelve .squares,
+.section_twelve .functionality,
+.section_twelve .roboto_lamp {
+  position: absolute;
+}
+.section_twelve .roboto_lamp {
+  bottom: 50px;
+  left: 100px;
+  height: 550px;
+}
+.section_twelve .roboto_lamp {
+  opacity: 0; /* Начальное состояние: невидимо */
+  transform: translateX(-100px); /* Начальное положение: смещено влево */
+  transition: opacity 1s ease, transform 1s ease; /* Параметры анимации */
+}
+.section_twelve .roboto_lamp.visible {
+  opacity: 1; /* Конечное состояние: видно */
+  transform: translateX(0); /* Конечное положение: на месте */
+}
+.section_twelve .squares {
+  height: 710px;
+  right: 185px;
+  top: 0;
+}
+.section_twelve .functionality {
+  width: 185px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section_twelve .functionality span {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+.section_twelve .text_one,
+.section_twelve .text_two,
+.section_twelve .text_three,
+.section_twelve .text_four {
+  position: absolute;
+  font-size: 34px;
+  width: 246px;
+}
+.section_twelve .text_one {
+  bottom: 430px;
+  right: 900px;
+}
+.section_twelve .text_two {
+  bottom: 10px;
+  right: 940px;
+}
+.section_twelve .text_three {
+  bottom: 470px;
+  right: 250px;
+}
+.section_twelve .text_four {
+  bottom: 10px;
+  right: 220px;
+}
+.section_thirteen {
+  height: 159px;
+}
+.section_fourteen {
+  font-size: 119px;
+  height: 159px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section_fourteen span {
+  animation: moveLeftRight 5s ease-in-out infinite; /* Применение анимации с плавной временной функцией */
+}
+
+.section_fifteen {
+  background-color: #000;
+  display: flex;
+  height: 707px;
+}
+.section_fifteen .functionality {
+  height: 100%;
+  width: 185px;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section_fifteen .functionality span {
+  display: inline-block;
+  transform: rotate(270deg);
+}
+.section_fifteen .text_one,
+.section_fifteen .text_two,
+.section_fifteen .text_three,
+.section_fifteen .loonie_robot {
+  position: absolute;
+  font-size: 34px;
+}
+.content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.section_fifteen .loonie_robot {
+  height: 517px;
+  right: 10px;
+  bottom: 20px;
+}
+.section_fifteen .loonie_robot {
+  opacity: 1; /* Начальное состояние: невидимо */
+  transform: translateX(833px); /* Начальное положение: смещено влево */
+  transition: opacity 1s ease, transform 1s ease; /* Параметры анимации */
+}
+.section_fifteen .loonie_robot.visible {
+  opacity: 1; /* Конечное состояние: видно */
+  transform: translateX(0); /* Конечное положение: на месте */
+}
+.section_fifteen .text_one {
+  width: 253px;
+  bottom: 20px;
+  left: 40px;
+}
+.section_fifteen .text_two {
+  top: 40px;
+  left: 400px;
+  width: 224px;
+}
+.section_fifteen .text_three {
+  bottom: 20px;
+  left: 650px;
+  width: 215px;
+}
+.section_sixteen {
+  color: #000;
+  height: 159px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 87px;
+}
+.section_sixteen .text_one {
+  text-decoration: line-through;
+}
+.section_sixteen .text_three {
+  display: inline-block;
+  color: #5c0101;
+  transform: rotate(180deg);
+}
+
